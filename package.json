@@ -1,0 +1,68 @@
+{
+  "name": "jsplay",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "lint": "eslint 'src/**/*.js'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "start:prod": "npm run build && http-server dist"
+  },
+  "eslintConfig": {
+    "extends": ["airbnb", "plugin:prettier/recommended"],
+    "rules": {
+      "prettier/prettier": "error",
+      "react/jsx-filename-extension": "off"
+    },
+    "env": {
+      "browser": true,
+      "jest": true
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5"
+  },
+  "babel": {
+    "presets": ["es2015", "react"]
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.3.0",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "http-server": "^0.10.0",
+    "jest": "^22.0.0",
+    "prettier": "^1.9.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^3.1.3",
+    "react-router": "^4.2.0",
+    "redux": "^3.7.2",
+    "style-loader": "^0.19.1",
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7",
+    "webpack-merge": "^4.1.1",
+    "webpack-visualizer-plugin": "^0.1.11"
+  }
+}
