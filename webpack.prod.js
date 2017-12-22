@@ -12,7 +12,21 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        use: extractCss.extract('css-loader'),
+        use: extractCss.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                camelCase: true,
+                importLoaders: 1,
+                minimize: true,
+                modules: true,
+              },
+            },
+            'postcss-loader',
+          ],
+        }),
       },
     ],
   },
@@ -20,8 +34,8 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new UglifyJSPlugin({ sourceMap: true }),
     extractCss,
+    new UglifyJSPlugin({ sourceMap: true }),
     new CopyWebpackPlugin([
       {
         from: 'node_modules/react/umd/react.production.min.js',
