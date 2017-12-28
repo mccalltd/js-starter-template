@@ -8,6 +8,8 @@
     "lint": "eslint 'src/**/*.js'",
     "test": "jest",
     "test:watch": "jest --watch",
+    "cover": "jest --coverage",
+    "cover:html": "jest --coverage && open out/coverage/lcov-report/index.html",
     "start": "NODE_ENV=development webpack-dev-server --config webpack.dev.js",
     "start:prod": "npm run build && http-server dist"
   },
@@ -39,7 +41,10 @@
     }
   },
   "jest": {
-    "setupFiles": ["<rootDir>/test/setup.js"],
+    "setupFiles": ["<rootDir>/test/enzymeSetup.js"],
+    "collectCoverageFrom": ["src/**/*.js"],
+    "coverageDirectory": "out/coverage",
+    "coverageReporters": ["json", "lcov"],
     "moduleNameMapper": {
       "\\.(css|scss)$": "<rootDir>/test/styleMock.js"
     }
